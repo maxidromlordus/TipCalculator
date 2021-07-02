@@ -52,3 +52,7 @@ body {
 .showItem {
   display: block;
 }
+
+.red-color {
+  background-color: red;
+}
