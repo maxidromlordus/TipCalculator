@@ -7,23 +7,22 @@ const babel = require("gulp-babel");
 const { watch } = require("gulp");
 
 function transpile() {
-  return src("src/index.js").pipe(babel()).pipe(dest("dist/"));
+  return src("src/js/app.js").pipe(babel()).pipe(dest("dist/"));
 }
 
 function brsfi() {
-  return browserify("./dist/index.js")
+  return browserify("./dist/app.js")
     .bundle()
     .pipe(source("bundle.js"))
     .pipe(dest("./dist/"));
 }
 
-// enable this if you want to watch changes
-
+// enable this if you want to watch changes;
 /* exports.default = function() {
   watch('src/index.js', series(transpile, brsfi));
 } */
 
 // enable this if you want manualy run you build
 exports.default = function () {
-  watch("src/*.js", series(transpile, brsfi));
+  watch("src/js/*.js", series(transpile, brsfi));
 };
